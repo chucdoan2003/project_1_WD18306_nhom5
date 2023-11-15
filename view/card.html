@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang chủ</title>
+    <title>Chi tiết sản phẩm</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -58,65 +58,108 @@
           </div>
         </div>
       </div>
-      <!-- slide-show -->
-      <div class="slide-show">
-        <div
-          id="carouselExampleIndicators"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="../img/banner1.jpg" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="../img/banner2.jpg" class="d-block w-100" alt="..." />
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+
+
+
+
+
+
+    <!--Giỏ hàng-->
+      <div class="wrap__cart">
+        <div class="cart__title">
+        <h1>Giỏ hàng của bạn</h1>
         </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-4">Sản phẩm</div>
+            <div class="col-2">Đơn giá</div>
+            <div class="col-2">Số lượng</div>
+            <div class="col-2">Số tiền</div>
+        </div>
+        <div class="cart__items">
+          <div class="row cart__item">
+            <div class="col-2 align__item"><input type="checkbox">
+              <i class="fa-solid fa-trash"></i></div>
+            <div class="col-4 cart__item-product">
+                <div class="cart__img">
+                    <img src="../assets/img/sp1.jpg" alt="">
+                </div>
+                <div class="cart__content">
+                  <div class="cart__name">T-Shirt thể thao Team Whales</div>
+                <div class="cart__color"><b>Màu: </b><span class="blue">Blue</span></div>
+                <div class="detail_category">Danh mục : <span>Quần áo Bóng đá</span></div>
+
+                </div>
+                
+            </div>
+            <div class="col-2 align__item">999 000 vnđ</div>
+            <div class="col-2 align__item">
+              <div class="quantity"> <div class="decrease">-</div><div class="number">1</div> <div class="increase">+</div></div>
+            
+          </div>
+            <div class="col-2 align__item">999 000 vnđ</div>
+          </div>
+        <div class="row cart__item">
+          <div class="col-2 align__item"><input type="checkbox">
+            <i class="fa-solid fa-trash"></i></div>
+          <div class="col-4 cart__item-product">
+              <div class="cart__img">
+                  <img src="../assets/img/sp1.jpg" alt="">
+              </div>
+              <div class="cart__content">
+                <div class="cart__name">T-Shirt thể thao Team Whales</div>
+              <div class="cart__color"><b>Màu: </b><span class="blue">Blue</span></div>
+              <div class="detail_category">Danh mục : <span>Quần áo Bóng đá</span></div>
+
+              </div>
+              
+          </div>
+          <div class="col-2 align__item">999 000 vnđ</div>
+          <div class="col-2 align__item">
+            <div class="quantity"> <div class="decrease">-</div><div class="number">1</div> <div class="increase">+</div></div>
+          
+        </div>
+          <div class="col-2 align__item">999 000 vnđ</div>
       </div>
-      <!-- product -->
-      <div style="padding: 40px">áas</div>
+        </div>
+        
+        <!-- <div class="cart__items">
+            <div class="cart__item">
+                <input type="checkbox">
+                <div class="cart__img">
+                    <img src="../assets/img/sp1.jpg" alt="">
+                </div>
+                
+            </div>
+        </div> -->
+        <div class="choice__delete">
+          <div class="choice">
+            Chọn tất cả
+        </div>
+        <div class="delete">
+          Xóa mục đã chọn
+      </div>
+      <div class="tongtien">
+        Tổng tiền: <span>999 000 vnđ</span>
+      </div>
+      <div class="thanhtoan">
+        Thanh Toán
+      </div>
+
+
+        </div>
+       
+      </div>
+ 
+     
+
+
+
+
+
+
+
+
       <!-- footer -->
       <div class="footer">
         <div class="main_foot">
