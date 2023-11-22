@@ -1,51 +1,49 @@
 <div class="add__product">
+    <?php 
+        if(is_array($show_one_sp)){
+            extract($show_one_sp);
+        }
+    ?>
     <h1>Sửa sản phẩm</h1>
     <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <p>Tên Sản phẩm</p>
-            <input type="text" id="tensp" name="tensp">
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên sản phẩm</label>
+            <input type="text" class="form-control" name="ten_sp" value="<?=$ten_sp?>" />
         </div>
-        <div class="form-group">
-            <p>Giá</p>
-            <input type="number" id="gia" name="gia">
+        <div class="mb-3">
+            <label for="name" class="form-label">Giá</label>
+            <input type="text" class="form-control" name="gia" value="<?=$gia?>" />
         </div>
-        <div class="form-group">
-            <p>Mô tả</p>
-            <input type="text" id="mota" name="mota">
+        <div class="mb-3">
+            <label for="name" class="form-label">Mô tả</label>
+            <input type="text" class="form-control" name="mo_ta" value="<?=$mo_ta?>" />
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Số lượng</label>
+            <input type="text" class="form-control" name="so_luong" value="<?=$so_luong?>" />
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Chi tiết</label>
+            <input type="text" class="form-control" name="chi_tiet" value="<?=$chi_tiet?>" />
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Hình ảnh</label>
+            <img src="../upload/img/sanpham/<?=$hinh_anh?>" alt=""
+                style="width: 100px;height: 100px;margin-bottom: 10px">
+            <input type="file" class="form-control" name="hinh_anh" />
         </div>
         <div class="form-group">
             <p for="">Danh mục</p>
-            <select name="danhmuc" id="">
+            <select name="danh_muc" id="">
                 <?php
-            foreach($list_danhmuc as $danhmuc):?>
-                <option value="<?= $danhmuc['id'] ?>"><?=$danhmuc['ten_danhmuc'] ?></option>
+            foreach($list_dm as $danhmuc):?>
+                <option value="<?= $danhmuc['id'] ?>" <?php if($danhmuc['id']==$id_dm){echo 'selected';} ?>>
+                    <?=$danhmuc['ten_danhmuc'] ?></option>
                 <?php endforeach; ?>
             </select>
 
         </div>
-        <div class="form-group">
-            <p>Mô tả</p>
-            <input type="text" id="mota" name="mota">
-        </div>
-        <div class="form-group color">
-            <p>Màu</p>
-            <input type="checkbox" name="" id="" value="Red">
-            <span>Màu đỏ</span>
-            <input type="checkbox" name="" id="" value="Blue">
-            <span> màu xanh dương</span>
-        </div>
-        <div class="form-group size">
-            <p>Size</p>
-            <input type="checkbox"><span>S</span>
-            <input type="checkbox"><span>M</span>
-            <input type="checkbox"><span>L</span>
-            <input type="checkbox"><span>XL</span>
-        </div>
-        <div class="form-group">
-            <p>Hình ảnh</p>
-            <input type="file">
-        </div>
-        <input type="submit" value="Thêm sản phẩm" name="btn_addsp" class="btn___addsp">
+        <input type="submit" value="Sửa sản phẩm" name="btn_editsp" class="btn__addsp">
 
 
     </form>

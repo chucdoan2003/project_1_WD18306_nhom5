@@ -26,11 +26,12 @@
             <div class="admin__aside-nav">
                 <ul>
                     <li><a href="#">Trang chủ</a> </li>
-                    <li> <a href="./?act=list_sanpham">Sản phẩm</a> </li>
-                    <li> <a href="./result/list_result.html"> Danh mục</a></li>
-                    <li> <a href="./chuyende/list_chuyende.html">Khách hàng</a></li>
+                    <li> <a href="./?act=list_sp">Sản phẩm</a> </li>
+                    <li> <a href="./?act=list_dm"> Danh mục</a></li>
+                    <li> <a href="./?act=dskh">Khách hàng</a></li>
                     <li> <a href="./dethi/list_dethi.html"> Thống kê</a></li>
                     <li> <a href="./khach_hang/list_khachhang.html">Bình luận</a></li>
+                    <li> <a href="./khach_hang/list_khachhang.html">Đơn hàng</a></li>
 
                 </ul>
             </div>

@@ -5,15 +5,14 @@
                 aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../img/banner1.jpg" class="d-block w-100" alt="..." />
+                <img src="./assets/img/banner1.jpg" class="d-block w-100" alt="..." />
             </div>
             <div class="carousel-item">
-                <img src="../img/banner2.jpg" class="d-block w-100" alt="..." />
+                <img src="./assets/img/banner2.jpg" class="d-block w-100" alt="..." />
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

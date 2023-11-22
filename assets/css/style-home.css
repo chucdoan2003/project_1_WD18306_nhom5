@@ -206,11 +206,14 @@ background-color:purple;
   align-items: center;
   width: 45px;
 }
-.number{
+.number {
   font-size: 30px;
-  padding: 0 20px;
+  padding: 0 0 0 12px;
   background-color: #EDEDED;
-
+  width: 60px;
+  /* text-align: center; */
+  outline: none;
+  border: none;
 }
 .detail__first-content button{
   padding: 10px 25px;
@@ -229,6 +232,9 @@ background-color:purple;
 }
 .addCart{
   background-color: #000;
+}
+.wrap__detail{
+  margin: 20px 0;
 }
 .wrap__detail .line{
   background-color: #000;
@@ -306,7 +312,7 @@ background-color:purple;
   margin: 10px 0;
 }
 .cart__img{
-  width: 35%;
+  width: 100%;
   height: 100%;
 }
 .cart__item-product{
@@ -361,4 +367,230 @@ background-color:purple;
 .thanhtoan:active{
   transform: scale(0.9,0.9);
 }
+
+
+/* Css login */
+
+.aside_item {
+  display: flex;
+  height: 750px;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+.aside {
+  margin-left: 60px;
+  width: 25%;
+  height: 100%;
+}
+.title {
+  font-weight: bold;
+  height: 100px;
+}
+.title h3 {
+  padding-top: 30px;
+  margin-left: 28px;
+}
+.content ul li {
+  text-transform: none;
+  list-style-type: none;
+  padding-bottom: 30px;
+}
+.content ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+}
+.content ul li a:hover {
+  color: red;
+}
+.article {
+  background-color: white;
+  height: 100%;
+  width: 75%;
+  border-radius: 10px;
+}
+.list_infor {
+  padding: 60px;
+}
+.list_infor a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+.list_infor h2 {
+  padding-bottom: 30px;
+}
+.noidung {
+  display: flex;
+  justify-content: space-between;
+}
+.noidung p {
+  font-size: 20px;
+}
+
+/* css to home/product */
+.group{
+  padding: 0 100px;
+}
+.cart_user {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.user {
+  padding: 0 20px;
+}
+.user i {
+  font-size: 20px;
+}
+.cart i {
+  font-size: 20px;
+}
+.prod {
+  padding: 40px 0;
+}
+.line0 {
+  background-color: gray;
+  height: 1px;
+  width: 210px;
+  margin-bottom: 7px;
+}
+.line1 {
+  background-color: gray;
+  height: 1.8px;
+  width: 30%;
+  margin-bottom: 7px;
+}
+.line2 {
+  background-color: gray;
+  height: 2px;
+  width: 50%;
+  margin-bottom: 20px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name_prod a {
+  text-decoration: none;
+}
+.name_prod a:hover {
+  color: red;
+}
+.sp img {
+  border: 1px solid rgb(219, 216, 216);
+  border-radius: 10px;
+}
+.mota {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 2;
+  height: 50px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+/* css phần thanh toán */
+.wrap__thanhtoan{
+  display:flex;
+  font-size: 20px;
+}
+.ttgiao_hang{
+  width: 50%;
+  padding: 10px 40px;
+  border-right: 3px solid #adb5bd;
+}
+.ttgio_hang{
+  flex:1;
+  background-color: #FAFAFA;
+  padding: 10px 40px;
+  font-size: 20px;
   
+}
+.ttgio_hang-item{
+  margin: 10px 0;
+  display:flex;
+  box-shadow: 1px 2px 2px #a9a9c4;
+  padding: 0 0 10px;
+}
+.ttgio_hang-itemcontent{
+  margin-left: 20px;
+  padding: 0 20px 0 10px; 
+}
+.ttgio_hang__title{
+  font-weight: bold;
+  font-size:24px ;
+}
+.ttgio_hang .line{
+  background-color: #adb5bd;
+  width: 100%;
+  height: 2px;
+}
+.pttt__group{
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 25px;
+
+}
+.phivc,.tamtinh,.tong{
+  margin: 10px 0;
+}
+
+.ttgio_hang__soluong,
+.ttgio_hang__price{
+  margin: 10px 0;
+}
+/* Css thanh toán thành công */
+.wrap_success{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 10px 200px;
+  
+}
+.ttgio_hang-item{
+  padding: 10px 20px;
+}
+.wrap__sucess2{
+  background-color:#FAFAFA ;
+  padding: 20px 40px;
+}
+.tt_nguoinhan{
+  padding: 10px 40px;
+}
+.tt_nguoinhan div{
+  margin: 10px 20px;
+}
+.wrap__sucess2 h1{
+  text-align: center;
+  color:rgb(67, 226, 67)
+}
+/* Css trang đơn hàng */
+
+.wrap__donhang{
+  font-size: 24px;
+  padding: 20px 200px;
+}
+.donhang__item-sp{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  padding: 10px 20px;
+}
+.donhang__item{
+  box-shadow: 0 0 2px rgba(0,0,0,0.9  );
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+.donhang__total,.donhang__trangthai{
+  margin: 10px 20px;
+  display: inline-block;
+}
+.wrap__donhang h1{
+  text-align: center;
+}
+
