@@ -17,7 +17,7 @@
                            </a>
                        </li>
                        <li>
-                           <a href="#">
+                           <a href="?act=don_hang">
                                <i class="fa-solid fa-cart-shopping" style="color: orange"></i> Đơn hàng
                            </a>
                        </li>

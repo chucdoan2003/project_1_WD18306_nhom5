@@ -13,13 +13,14 @@
             <h3 style="font-size: 24px;">Sản phẩm</h3>
             <?php foreach($idProducttts as $idProducttt): ?>
             <?php
+             
                  $cart_product=get_sp_frcart($id_tk,$idProducttt);
 
                  if(is_array($cart_product)){
                     extract($cart_product);
                    
                  }
-            
+                 delete_sp_cart($idProducttt,$id_cart);
                 ?>
             <input type="hidden" name="id_producttt[]" value="<?=$id_sp?>">
             <div class="ttgio_hang-item">

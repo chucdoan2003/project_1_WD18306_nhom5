@@ -34,7 +34,7 @@
     }
     //Lấy sản phẩm mới
     function get_sp_new(){
-        $sql= "select * from san_pham where id_dm=?";
+        $sql= "select * from san_pham where id_dm=? limit 4";
         return pdo_query($sql,4);
     }
     // lấy sản phẩm có view nhiều nhất

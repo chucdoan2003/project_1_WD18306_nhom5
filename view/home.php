@@ -18,12 +18,10 @@
                   <p class="mota">
                       <?= $sp['mo_ta']?>
                   </p>
-                  <a href="#" class="btn btn-success">Mua ngay</a>
+                  <a href="?act=ctsp&id=<?=$sp['id']?>" class="btn btn-success">Mua ngay</a>
               </div>
           </div>
           <?php endforeach; ?>
-
-
       </div>
       <h3 style="padding-top: 30px">SẢN PHẨM ĐƯỢC XEM NHIỀU NHẤT</h3>
       <div class="line0"></div>

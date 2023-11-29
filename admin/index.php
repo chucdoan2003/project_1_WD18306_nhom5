@@ -3,6 +3,7 @@
     include_once("../model/danhmuc.php");
     include_once("../model/sanpham.php");
     include_once("../model/khachhang.php");
+    include_once("../model/hoadon.php");
     $act=$_GET['act'] ??'';
     $view='./trangchu/trangchu.php';
     switch ($act) {
@@ -143,7 +144,43 @@
                 header("location: ?act=dskh");
             }
             $view = "khachhang/list_khachhang.php";
-            break;    
+            break;
+        //Đơn hàng
+        case 'list_donhang':
+            $donhangs = get_all_hoadon();
+            
+            $view = './donhang/list.php';
+            break;
+        case 'xacnhan_donhang':
+            if(isset($_GET['id'])){
+                $id_donhang=$_GET['id'];
+                $change=1;
+                change_donhang($change,$id_donhang);
+            }
+            $donhangs = get_all_hoadon();
+            $view = './donhang/list.php';
+
+            break;
+        case 'cancel_donhang':
+            if(isset($_GET['id'])){
+                $id_donhang=$_GET['id'];
+                $change=4;
+                change_donhang($change,$id_donhang);
+            }
+            $donhangs = get_all_hoadon();
+            $view = './donhang/list.php';
+
+            break;
+        case 'dagiao_donhang':
+            if(isset($_GET['id'])){
+                $id_donhang=$_GET['id'];
+                $change=2;
+                change_donhang($change,$id_donhang);
+            }
+            $donhangs = get_all_hoadon();
+            $view = './donhang/list.php';
+
+            break;
         default:
             # code...
             break;

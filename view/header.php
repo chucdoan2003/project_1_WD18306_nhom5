@@ -27,7 +27,7 @@
                 <ul>
                     <li><a href="?act=home">Trang chủ</a></li>
                     <li><a href="#">Sản phẩm</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="?act=don_hang">Đơn hàng</a></li>
                     <li><a href="#">Liên hệ</a></li>
                 </ul>
             </nav>

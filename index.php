@@ -7,6 +7,7 @@
     include_once("./model/giohang.php");
     include_once("./model/thanhtoan.php");
     include_once("./model/hoadon.php");
+    include_once('./model/nguoinhan.php');
     session_start();
     $act=$_GET['act'] ??'';
     $view='./view/home.php';
@@ -20,6 +21,8 @@
             $view='./view/home.php';
             break;
         case 'ctsp':
+            $slide_show='';
+
             $title="Chi tiết sản phẩm";
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
@@ -28,17 +31,26 @@
             $view='./view/detail_product.php';
             break;
         case 'gio_hang':
+            $slide_show='';
+
             $title= 'Giỏ hàng';
+            $thongbao="";
             if(isset($_SESSION['user1'])){
                 $id=$_SESSION['user1']['id'];
                 // $show_cart=show_cart($id);
+
                 $carts=show_gh($id);
-                
+            }
+            else {
+                $carts= '';
             }
             $view= './view/cart.php';
             break;
             //login
         case 'add_cart':
+            $thongbao="";
+            
+          
             if(isset($_POST['btn_addcart'])){
                 $id_sp=$_POST['id'];
                 $so_luong=$_POST['so_luong_sp'];
@@ -63,10 +75,21 @@
                 else if(is_array($checkID_tk) && !is_array($checkID_sp)){
                     extract($checkID_tk);
                     insert_sp_ctgh($id,$id_sp,$so_luong,$tonggia);
+                } 
+                if(isset($_SESSION['user1'])){
+                    $id=$_SESSION['user1']['id'];
+                    // $show_cart=show_cart($id);
+    
+                    $carts=show_gh($id);
                 }
+                $view='view/cart.php';              
             }   
             break;
         case 'delete_cart':
+            $slide_show='';
+            $thongbao="";
+
+
             if(isset($_GET['id_sp']) && isset($_GET['id_cart'])){
                 $id_sp=$_GET['id_sp'];
                 $id_cart=$_GET['id_cart'];
@@ -80,27 +103,52 @@
             }
             $view='./view/cart.php';
             break;
+        case'delete_carts':
+            $slide_show='';
+            if(isset($_POST['delete_carts']) && isset($_GET['id'])){
+                
+            }
+            if(isset($_SESSION['user1'])){
+                $id=$_SESSION['user1']['id'];
+                // $show_cart=show_cart($id);
+                $carts=show_gh($id);
+                
+            }
+            $view='./view/cart.php';
+            break;
+
+          
         //chuyển tới trang thanh toán
         case 'add_tt':
+            $thongbao="";
+
             if(isset($_SESSION['user1']) && $_SESSION['user1']!=''){
                 $id_tk=$_SESSION['user1']['id'];
+                $carts=show_gh($id_tk);
             }
             if(isset($_POST['tt']) && isset($_POST['idProducts']))
             {
                 $idProducts=$_POST['idProducts'];
+                $total=0;
+                $view='./view/thanhtoan.php';
+                $thongbao="";
             }
-            $total=0;
-            $view='./view/thanhtoan.php';
+            else if(isset($_POST['tt']) && !isset($_POST['idProducts'])){
+                $thongbao="Vui lòng chọn sản phẩm để thanh toán";
+            $view='./view/cart.php';
+           
+            }
+           
             break;
-        
         case 'accept_tt':
+            $slide_show='';
             if(isset($_SESSION['user1']) && $_SESSION['user1']!= ''){
                 $id_tk=$_SESSION['user1']['id'];  
             }
             $id_carts=get_id_cart($id_tk);
           
             if(isset($_POST['id_producttt'])){
-                $idProducttts=$_POST['id_producttt'];
+                $idProducttts=$_POST['id_producttt'];//[1,2,3,5]
             }
             if(isset($_POST['accept_tt']) && $_POST['accept_tt']!=''){
                 $id_cart=$id_carts['id'];
@@ -121,12 +169,18 @@
                 $gia=$cart_product['gia'];
                 $so_luong=$cart_product['so_luong'];
                 insert_cthd($id_hoadon,$id_sp,$so_luong, $gia);
+               
             }
             
             $view='./view/tt_success.php';
             break;
-        // Hiển thị đơn hàng
-        case 'don_hang':
+        case 'cancel_donhang':
+            $slide_show='';
+            if(isset($_GET['id'])){
+                $id_donhang=$_GET['id'];
+                $change=4;
+                change_donhang($change,$id_donhang);
+            }
             if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
                 $id_tk=$_SESSION['user1']['id'];
                 $bills=get_hd_idtk($id_tk);
@@ -134,8 +188,109 @@
             $title='Đơn hàng';
             $view='./view/don_hang.php';
             break;
-       
+        case 'mua_lai':
+            $slide_show='';
+                if(isset($_GET['id'])){
+                    $id_donhang=$_GET['id'];
+                    $change=0;
+                    change_donhang($change,$id_donhang);
+                }
+                if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                    $id_tk=$_SESSION['user1']['id'];
+                    $bills=get_hd_idtk($id_tk);
+                }
+                $title='Đơn hàng';
+                $view='./view/don_hang.php';
+                break;
+        case 'da_nhan':
+            $slide_show='';
+                if(isset($_GET['id'])){
+                    $id_donhang=$_GET['id'];
+                    $change=3;
+                    change_donhang($change,$id_donhang);
+                }
+                $danhan='';
+                if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                    $id_tk=$_SESSION['user1']['id'];
+                    $static=3;
+                    $bills=get_hd_static($id_tk,$static);
+                }
+                $title='Đơn hàng';
+                $view='./view/don_hang.php';
+                break;
+        
+        // Hiển thị đơn hàng
+        case 'don_hang':
+            $all='';
+            $slide_show='';
+            if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                $id_tk=$_SESSION['user1']['id'];
+                $bills=get_hd_idtk($id_tk);
+            }
+            else if(!isset($_SESSION['user1']) && !isset($_SESSION['user'])){
+                $bills='';
+            }
+            $title='Đơn hàng';
+            $view='./view/don_hang.php';
+            break;
+        case 'don_hang_xacnhan':
+            $xacnhan='';
+            $slide_show='';
+            if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                $id_tk=$_SESSION['user1']['id'];
+                $static=0;
+                $bills=get_hd_static($id_tk,$static);
+            }
+            $title='Đơn hàng';
+            $view='./view/don_hang.php';
+            break;
+        case 'don_hang_danggiao':
+            $danggiao='';
+            $slide_show='';
+            if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                $id_tk=$_SESSION['user1']['id'];
+                $static=1;
+                $bills=get_hd_static($id_tk,$static);
+            }
+            $title='Đơn hàng';
+            $view='./view/don_hang.php';
+            break;
+        case 'don_hang_dagiao':
+            $dagiao='';
+            $slide_show='';
+            if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                $id_tk=$_SESSION['user1']['id'];
+                $static=2;
+                $bills=get_hd_static($id_tk,$static);
+            }
+            $title='Đơn hàng';
+            $view='./view/don_hang.php';
+            break;
+        case 'don_hang_danhan':
+                $danhan='';
+                $slide_show='';
+                if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                    $id_tk=$_SESSION['user1']['id'];
+                    $static=3;
+                    $bills=get_hd_static($id_tk,$static);
+                }
+                $title='Đơn hàng';
+                $view='./view/don_hang.php';
+                break;
+        case 'don_hang_dahuy':
+            $dahuy='';
+            $slide_show='';
+            if(isset($_SESSION['user1']) && $_SESSION['user1']!=""){
+                $id_tk=$_SESSION['user1']['id'];
+                $static=4;
+                $bills=get_hd_static($id_tk,$static);
+            }
+            $title='Đơn hàng';
+            $view='./view/don_hang.php';
+            break;
         case "login":
+            $slide_show='';
+
             if(isset($_POST['btn_login'])){
                 $username = $_POST['username'];
                 $password = $_POST['pass'];
@@ -155,6 +310,8 @@
             break;
             // đăng ký
          case "register":
+            $slide_show='';
+
             if(isset($_POST['btn_insert'])){
                 $username = $_POST['username'];
                 $email = $_POST['email'];
@@ -176,13 +333,20 @@
             break;
             // đăng xuất
         case 'logout':
+            $slide_show='';
+
             if(isset($_SESSION['user'])){
                 unset($_SESSION['user']);
+                
                 header('location: ?act=login');
+            }
+            if(isset($_SESSION['user1'])){
+                unset($_SESSION['user1']);
             }
             break;
             // update tài khoản
         case "edit_account":
+            $slide_show='';
             if(isset($_SESSION['user1'] )){
                 unset($_SESSION['user1']);
             }
@@ -218,7 +382,10 @@
             break;
     }
     include_once('./view/header.php');
+    if(!isset($slide_show)){
     include_once('./view/slide_show.php');
+
+    }
     include_once($view);
     include_once('./view/footer.php');
 

@@ -9,7 +9,7 @@
     display:flex;
     background-color: #EAEDF0;
     font-size: 24px;
-    height: 1024px;
+    
     padding:0;
 
 }
@@ -32,13 +32,13 @@
 .admin__aside-nav ul{
     display:flex;
     flex-direction: column;
-    align-items: center;
     margin:10px 0;
 }
 .admin__aside-nav ul li{
     list-style-type: none;
     cursor: pointer;
     margin:5px 0;
+    width:100%;
 
 }
 .admin__aside-nav ul li a{
@@ -46,7 +46,7 @@
     text-decoration: none;
     color: #000;
 }
-.admin__article{
+.admin__article{    
     flex:1;
 }
 .admin__article__header{

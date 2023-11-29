@@ -37,8 +37,14 @@
                 Số lượng còn: <?=$so_luong?>
             </div>
             <div class="action">
+
+                <?php if(isset($_SESSION['user']) && isset($_SESSION['user1'])): ?>
                 <button class="buy__now">Mua ngay</button>
                 <button class="addCart" type="submit" name="btn_addcart">Thêm vào giỏ hàng</button>
+                <?php endif; ?>
+                <?php if(!isset($_SESSION['user']) && !isset($_SESSION['user1'])){
+                        echo 'Đăng nhập để thực hiện chức năng mua ngay và thêm vào giỏ hàng';
+                } ?>
             </div>
             </form>
 

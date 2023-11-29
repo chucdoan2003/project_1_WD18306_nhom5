@@ -31,7 +31,7 @@
                     <li> <a href="./?act=dskh">Khách hàng</a></li>
                     <li> <a href="./dethi/list_dethi.html"> Thống kê</a></li>
                     <li> <a href="./khach_hang/list_khachhang.html">Bình luận</a></li>
-                    <li> <a href="./khach_hang/list_khachhang.html">Đơn hàng</a></li>
+                    <li> <a href="?act=list_donhang">Đơn hàng</a></li>
 
                 </ul>
             </div>

@@ -593,4 +593,27 @@ background-color:purple;
 .wrap__donhang h1{
   text-align: center;
 }
+/* Css cho nav đơn hàng */
+.donhang_nav{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 10px;
+}
+.donhang_nav a{
+  text-decoration: none;
+  text-transform: none;
+  color: #000;
+  font-size: 24px; 
+}
+.donhang_all{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 17%;
+  padding: 0 0 5px 0;
+}
+.duongkeduoi{
+  border-bottom: 2px solid blue;
+}
 

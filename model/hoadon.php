@@ -24,10 +24,28 @@
         $sql = "select * from hoa_don where id_tk =? order by id desc";
         return pdo_query($sql,$id_tk);
     }
+    function get_hd_static($id_tk,$static){
+        $sql = "select * from hoa_don where id_tk =? and trang_thai=? order by id desc";
+        return pdo_query($sql,$id_tk,$static);
+    }
     // lấy chi tiết hóa đơn theo id hóa đơn
     function get_cthd_id($id_hd){
         $sql="select * from chi_tiet_hoadon where id_hoadon=? order by id desc";
         return pdo_query($sql,$id_hd);
 
     }
+   function change_donhang($change,$id){
+    $sql="update hoa_don set trang_thai=? where id=?";
+    pdo_execute($sql,$change,$id);
+   }
+   // Lấy dữ liệu từ hóa đơn và tên tài khoản
+   function get_all_hoadon(){
+    $sql = "SELECT hoa_don.*, tai_khoan.ten_dang_nhap FROM hoa_don JOIN tai_khoan ON hoa_don.id_tk=tai_khoan.id order by hoa_don.id desc";
+    return pdo_query($sql);
+   } 
+   // lấy sản phẩm trong chi tiết hóa đơn theo id hóa đơn
+   function get_sp_cthd($id_hd){
+    $sql = "select * from chi_tiet_hoadon where id_hoadon=? order by id desc";
+    return pdo_query($sql,$id_hd);
+   }
 ?>
