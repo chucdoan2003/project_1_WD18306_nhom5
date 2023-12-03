@@ -4,10 +4,10 @@
         <h1>Đặt hàng thành công</h1>
         <div class="tt_nguoinhan">
             <h3 style="font-size: 24px;">Thông tin người nhận</h3>
-            <div class="hoten">Họ và tên:<?=$ho_ten?></div>
-            <div class="sdt">Số điện thoại:<?=$sdt?></div>
+            <div class="hoten">Họ và tên: <?=$ho_ten?></div>
+            <div class="sdt">Số điện thoại: <?=$sdt?></div>
             <div class="email__nguoinhan">Email: <?=$email?></div>
-            <div class="diachi">Địa chỉ:<?=$dia_chi?></div>
+            <div class="diachi">Địa chỉ: <?=$dia_chi?></div>
         </div>
         <div class="ttgio_hang">
             <h3 style="font-size: 24px;">Sản phẩm</h3>

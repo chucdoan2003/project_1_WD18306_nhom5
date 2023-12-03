@@ -13,6 +13,8 @@
     $view='./view/home.php';
     $spnew=get_sp_new();
     $sptop4view=get_sp_view_top4();
+    $dsdm = load_all_danhmuc();
+    $dssp = load_all_sp();
     switch ($act) {
         case 'home':
             $title="Home";
@@ -20,6 +22,37 @@
         
             $view='./view/home.php';
             break;
+        case "product":
+            
+           
+            $view = "./view/product.php";
+            break;
+        case "searchsp_dm":
+            if(isset($_GET['iddm']) && $_GET['iddm'] > 0){
+                $dssp = searchsp_danhmuc($_GET['iddm']);
+            }
+            $view = "view/product.php";
+            break;
+            // tìm kiếm sp theo tên
+            case "search_tensp":
+            if(isset($_POST['ten_sp']) && $_POST['ten_sp'] != ""){
+                $dssp = search_tensp($_POST['ten_sp']);
+            }
+            $view = "view/product.php";
+            break; 
+            // tìm kiếm sp theo giá
+            case "search_gia1sp":
+            $dssp = search_gia1sp();
+            $view = "view/product.php";
+            break;
+            case "search_gia2sp":
+            $dssp = search_gia2sp();
+            $view = "view/product.php";
+            break;
+            case "search_gia3sp":
+            $dssp = search_gia3sp();
+            $view = "view/product.php";
+            break;  
         case 'ctsp':
             $slide_show='';
 
@@ -27,6 +60,8 @@
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
             }
+            tangview($_GET['id']);
+            $sp_lienquan = sp_lienquan($_GET['id']);
             $sp=get_one_sp($id);
             $view='./view/detail_product.php';
             break;
@@ -125,6 +160,7 @@
             if(isset($_SESSION['user1']) && $_SESSION['user1']!=''){
                 $id_tk=$_SESSION['user1']['id'];
                 $carts=show_gh($id_tk);
+               
             }
             if(isset($_POST['tt']) && isset($_POST['idProducts']))
             {
@@ -135,8 +171,18 @@
             }
             else if(isset($_POST['tt']) && !isset($_POST['idProducts'])){
                 $thongbao="Vui lòng chọn sản phẩm để thanh toán";
-            $view='./view/cart.php';
+                $view='./view/cart.php';
            
+            }else if(isset($_POST['delete_carts']) && isset($_POST['idProducts'])){
+                $idProducts=$_POST['idProducts'];
+                $get_idcart=get_id_cart($id_tk);
+                $id_cart=$get_idcart['id'];
+                foreach($idProducts as $idProduct){
+                    delete_sp_cart($idProduct,$id_cart);
+                }
+                header('location: ?act=gio_hang');
+                $view='./view/cart.php';
+
             }
            
             break;
@@ -153,10 +199,10 @@
             if(isset($_POST['accept_tt']) && $_POST['accept_tt']!=''){
                 $id_cart=$id_carts['id'];
                 $tong_tien=$_POST['total'];
-                $ngay=date('d-m-Y H:i:s');
+              
                 $httt=$_POST['tt_code'];
                 
-                $id_hoadon=insert_hoadon($id_tk,$id_cart,$tong_tien,$ngay,$httt);
+                $id_hoadon=insert_hoadon($id_tk,$id_cart,$tong_tien,$httt);
                 $ho_ten=$_POST['ho_ten'];
                 $sdt=$_POST['sdt'];
                 $email=$_POST['email'];
@@ -387,6 +433,7 @@
 
     }
     include_once($view);
+    
     include_once('./view/footer.php');
 
 ?>

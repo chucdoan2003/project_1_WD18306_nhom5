@@ -67,35 +67,43 @@
     </div>
     <div class="line"></div>
     <div class="comment">
-        <div class="comment__title">Bình luận</div>
-        <div class="comment__add">Thêm bình luận</div>
-        <div class="comment__content">
-            <div class="comment__content-acount">
-                <i class="fa-solid fa-user"></i>
-                Nguyễn Văn A
-            </div>
-            <div class="comment__content-cm">
-                Sản phẩm tốt....
-            </div>
-
+        <!-- bình luận -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $("#comment").load("view/binhluan/binhluanform.php", {
+                id_sp: <?php echo $sp['id'] ?>
+            });
+        });
+        </script>
+        <div class="row mb" id="comment">
         </div>
-        <div class="comment__content">
-            <div class="comment__content-acount">
-                <i class="fa-solid fa-user"></i>
-                Nguyễn Văn B
-            </div>
-            <div class="comment__content-cm">
-                Sản phẩm rất vừa vặn
-            </div>
-
-        </div>
-
     </div>
+
     <h4>Sản phẩm liên quan</h4>
     <div class="product__relative">
-        <div class="product__relative-item">sản phẩm 1</div>
-        <div class="product__relative-item">Sản phẩm 2</div>
-        <div class="product__relative-item">Sản phẩm 2</div>
+        <!-- Sản phẩm liên quan -->
+        <?php foreach($sp_lienquan as $value):?>
+        <div class="sp" style="width: 20rem">
+            <?php if($value['hinh_anh'] != null && $value['hinh_anh'] !=""): ?>
+            <img src="upload/img/sanpham/<?php echo $value['hinh_anh']; ?>" class="card-img-top" alt="..." />
+            <?php endif; ?>
+            <div class="card-body">
+                <h5 class="name_prod"><a
+                        href="?act=ctsp&id=<?php echo $value['id'];?>"><?php echo $value['ten_sp']; ?></a></h5>
+                <p class="card-price">
+                    <span>Giá: <?php echo number_format($value['gia']) ; ?> VNĐ</span>
+                </p>
+                <p class="card-price">
+                    <span>Lượt xem: <?=$value['luot_xem']?></span>
+                </p>
+                <p class="mota">
+                    <?php echo $value['mo_ta']; ?>
+                </p>
+                <a href="?act=ctsp&id=<?php echo $value['id'];?>" class="btn btn-success">Mua ngay</a>
+            </div>
+        </div>
+        <?php endforeach;?>
     </div>
 
 </div>

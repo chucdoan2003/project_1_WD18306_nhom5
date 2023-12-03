@@ -38,7 +38,7 @@
                    </ul>
                </div>
            </div>
-           <div class="article">
+           <div class="article2" style=' background-color: white; height: 100%; width: 80%; margin-left: 40px;'>
                <?php if(isset($_SESSION['user1'])){
                 extract($_SESSION['user1']);
               } else{

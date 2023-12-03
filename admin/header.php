@@ -15,7 +15,7 @@
 
     <title>admin</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
-</head>
+</head> 
 
 <body>
     <div class="container">
@@ -29,9 +29,9 @@
                     <li> <a href="./?act=list_sp">Sản phẩm</a> </li>
                     <li> <a href="./?act=list_dm"> Danh mục</a></li>
                     <li> <a href="./?act=dskh">Khách hàng</a></li>
-                    <li> <a href="./dethi/list_dethi.html"> Thống kê</a></li>
-                    <li> <a href="./khach_hang/list_khachhang.html">Bình luận</a></li>
-                    <li> <a href="?act=list_donhang">Đơn hàng</a></li>
+                    <li> <a href="./?act=thongke"> Thống kê</a></li>
+                    <li> <a href="./?act=dsbl">Bình luận</a></li>
+                    <li> <a href="./?act=list_donhang">Đơn hàng</a></li>
 
                 </ul>
             </div>

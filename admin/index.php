@@ -4,6 +4,8 @@
     include_once("../model/sanpham.php");
     include_once("../model/khachhang.php");
     include_once("../model/hoadon.php");
+    include_once('../model/binhluan.php');
+    include_once('../model/thongke.php');
     $act=$_GET['act'] ??'';
     $view='./trangchu/trangchu.php';
     switch ($act) {
@@ -145,6 +147,19 @@
             }
             $view = "khachhang/list_khachhang.php";
             break;
+        //Bình luận
+        case "dsbl":
+            $dsbl = danhsach_binhluan();
+            $view = "binhluan/list.php";
+            break;
+        // xóa bình luận
+        case "delete_bl":
+            if(isset($_GET['idbl']) && $_GET['idbl'] >0){
+                delete_binhluan($_GET['idbl']);
+                header("location: ?act=dsbl");
+            }
+            $view = "binhluan/list.php";
+            break;
         //Đơn hàng
         case 'list_donhang':
             $donhangs = get_all_hoadon();
@@ -180,6 +195,21 @@
             $donhangs = get_all_hoadon();
             $view = './donhang/list.php';
 
+            break;
+        //Thống ke
+        case "thongke":
+            $view = "thongke/list_all.php";
+            break;
+        // thống kê số lượng sản phẩm theo danh mục và số lượng đơn hàng trong ngày
+        case "thongke_quantity":
+            $dsthongke_dm = load_thongke_sanpham_danhmuc();
+            $dsthongke_day = load_thongke_sanpham_theongay();
+            $view = "thongke/list_sp_quantity.php";
+            break;
+        // thống kê doanh thu
+        case "thongke_scale":
+            $dsthongke_scale = load_thongke_doanhthu();
+            $view = "thongke/list_sp_scale.php";
             break;
         default:
             # code...

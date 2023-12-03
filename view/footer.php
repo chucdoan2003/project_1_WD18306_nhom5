@@ -1,3 +1,4 @@
+<!-- <script type="module" src="./assets/js/register_valid.js"></script> -->
 <div class="footer">
     <div class="main_foot">
         <div class="foot1">

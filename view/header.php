@@ -26,7 +26,7 @@
             <nav>
                 <ul>
                     <li><a href="?act=home">Trang chủ</a></li>
-                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="?act=product">Sản phẩm</a></li>
                     <li><a href="?act=don_hang">Đơn hàng</a></li>
                     <li><a href="#">Liên hệ</a></li>
                 </ul>
@@ -42,7 +42,7 @@
                             <i class="fa-solid fa-cart-shopping" style="color: black"></i>
                         </a>
                     </div>
-                    <div class="user">
+                    <div class="user" style="padding: 0 20px;">
                         <a href="?act=login">
                             <i class="fa-solid fa-user" style="color: black"></i>
                         </a>

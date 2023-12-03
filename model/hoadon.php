@@ -1,10 +1,10 @@
 <?php
     //thêm thông tin vào hóa đơn
-    function insert_hoadon($id_tk,$id_cart,$tong_tien,$ngay,$httt){
+    function insert_hoadon($id_tk,$id_cart,$tong_tien,$httt){
         $conn=pdo_get_connection();
-        $sql= "insert into hoa_don(id_tk,id_giohang,tong_tien,ngay,httt) values(?, ?, ?, ?, ?)";
+        $sql= "insert into hoa_don(id_tk,id_giohang,tong_tien,httt) values(?, ?, ?, ?)";
         $stmt= $conn->prepare($sql);
-        $stmt->execute([$id_tk,$id_cart,$tong_tien,$ngay,$httt]);
+        $stmt->execute([$id_tk,$id_cart,$tong_tien,$httt]);
         $lastID= $conn->lastInsertId();
         return $lastID;   
     }

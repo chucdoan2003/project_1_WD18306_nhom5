@@ -57,9 +57,7 @@
   align-items: center;
   margin: 20px;
 }
-.user {
-  padding: 0 20px;
-}
+
 .user i {
   font-size: 20px;
 }
@@ -373,7 +371,7 @@ background-color:purple;
 
 .aside_item {
   display: flex;
-  height: 750px;
+
   padding: 30px;
   background-color: #f5f5f5;
 }
@@ -405,11 +403,13 @@ background-color:purple;
   color: red;
 }
 .article {
-  background-color: white;
+  /* background-color: white; */
   height: 100%;
-  width: 75%;
-  border-radius: 10px;
+  width: 80%;
+ 
+  margin-left: 40px;
 }
+
 .list_infor {
   padding: 60px;
 }
@@ -438,9 +438,7 @@ background-color:purple;
   align-items: center;
   margin: 20px;
 }
-.user {
-  padding: 0 20px;
-}
+
 .user i {
   font-size: 20px;
 }
@@ -481,7 +479,8 @@ background-color:purple;
 }
 .sp img {
   border: 1px solid rgb(219, 216, 216);
-  border-radius: 10px;
+  
+  /* border-radius: 10px; */
 }
 .mota {
   overflow: hidden;
@@ -609,11 +608,108 @@ background-color:purple;
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 17%;
   padding: 0 0 5px 0;
 }
 .duongkeduoi{
   border-bottom: 2px solid blue;
 }
+/* css cho product */
+.aside_item {
+  display: flex;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
 
+.sidebar_aside {
+  border-radius: 5px;
+  width: 20%;
+  background-color: white;
+}
+.list_prod {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  grid-row-gap:20px ;
+}
+.sp {
+  background-color: #fff;
+  width:100%;
+ 
+}
+
+/* danh mục */
+.category {
+  padding: 30px;
+}
+.category h3 {
+  text-align: center;
+  padding: 20px;
+}
+.list_danhmuc {
+  display: flex;
+  justify-content: space-evenly;
+}
+.list_danhmuc a {
+  font-size: 20px;
+  text-decoration: none;
+}
+.price {
+  text-align: center;
+  padding: 10px;
+}
+/* search theo tên */
+.filter_name {
+  padding-bottom: 20px;
+}
+.filter_name h5 {
+  padding-bottom: 20px;
+}
+.search_sp {
+  height: 40px;
+  width: 220px;
+  background-color: aliceblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+.search_sp input {
+  outline: none;
+  border: none;
+  width: 150px;
+  background-color: aliceblue;
+  margin: 0 0 0 5px;
+}
+.button {
+  padding-top: 20px;
+}
+.content_filter {
+  text-align: center;
+}
+/* search theo giá */
+.filter_price a {
+  text-decoration: none;
+  color: black;
+}
+.price {
+  padding-bottom: 10px;
+}
+.filter_price a:hover {
+  color: red;
+}
+/* valid dk */
+.spanvalid{
+  color: red;
+  margin: 10px 0;
+  height: 12px;
+  font-weight: 600;
+}
+/* css cho form đăng nhập */
+.form-login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

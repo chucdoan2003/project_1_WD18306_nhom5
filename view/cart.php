@@ -50,32 +50,38 @@
 
 
         </div>
-        <button class="thanhtoan" type="submit" name="tt">
+        <button class="thanhtoan" style="border:none;outline:none;" type="submit" name="tt">
             Thanh Toán
         </button>
-        <?=$thongbao?>
+        <?php if(isset($thongbao)){
+            echo $thongbao;
+        }
+        else {
+            echo '';
+        }?>
+
+
+        <div class="choice__delete">
+            <div class="choice" onclick="choicAll()">
+                Chọn tất cả
+            </div>
+            <div class="choice" onclick="bochon()">
+                Bỏ chọn
+            </div>
+            <div class="delete">
+                <button name='delete_carts' onclick=" return confirm('Bạn có chắc chắn xóa không ..?')" type="submit"
+                    style="border:none;outline:none;background-color:rgb(239 95 95)">Xóa mục đã
+                    chọn</button>
+            </div>
+
+
+
+
+
+
+
+        </div>
     </form>
-
-    <div class="choice__delete">
-        <div class="choice" onclick="choicAll()">
-            Chọn tất cả
-        </div>
-        <div class="choice" onclick="bochon()">
-            Bỏ chọn
-        </div>
-        <div class="delete">
-            <a href="?act=delete_carts&id=" name='delete_carts'>Xóa mục đã chọn</a>
-        </div>
-        <div class="tongtien">
-            Tổng tiền: <span>999 000 vnđ</span>
-        </div>
-
-
-
-
-
-
-    </div>
     <?php }
     else{
         echo '<h3>Đăng nhập để thực hiện chức năng</h3>';

@@ -6,7 +6,7 @@
         pdo_execute($sql,$ten_sp,$gia,$mo_ta,$so_luong,$chi_tiet,$hinh_anh,$id_dm);
     }
     //Lấy tất cả sản phẩm trong bảng 
-    function load__all_sp(){
+    function load_all_sp(){
         $sql= "select * from san_pham";
         return pdo_query($sql); 
     }
@@ -46,5 +46,48 @@
     function get_tensp_img($id_sp){
         $sql= "select san_pham.ten_sp, san_pham.hinh_anh from san_pham where id=?";
         return pdo_query_one($sql,$id_sp);
+    }
+    
+    function tangview($idsp){
+        $sp = get_one_sp($idsp);
+        $view = $sp['luot_xem'] + 1;
+        $sql = "update san_pham set luot_xem = '$view' where id = $idsp";
+        pdo_execute($sql);
+    }
+
+    function sp_lienquan($idsp){
+        $sp = get_one_sp($idsp);
+        $iddm = $sp['id_dm'];
+        $sql = "select * from san_pham where id_dm = $iddm and id <> $idsp limit 0, 3";
+        $result = pdo_query($sql);
+        return $result;
+    }
+
+    function searchsp_danhmuc($iddm){
+        $sql = "select * from san_pham where id_dm = $iddm";
+        $result = pdo_query($sql);
+        return $result;
+    }
+    // tìm kiếm sản phẩm theo tên
+    function search_tensp($name){
+        $sql = "select * from san_pham where ten_sp like '%$name%' ";
+        $result = pdo_query($sql);
+        return $result;
+    }
+    // tìm kiếm sản phẩm theo giá
+    function search_gia1sp(){
+        $sql = "select * from san_pham where gia >= 100000 and gia <= 200000";
+        $result = pdo_query($sql);
+        return $result;
+    }
+    function search_gia2sp(){
+        $sql = "select * from san_pham where gia >= 200000 and gia <= 300000";
+        $result = pdo_query($sql);
+        return $result;
+    }
+    function search_gia3sp(){
+        $sql = "select * from san_pham where gia >= 300000 and gia <= 500000";
+        $result = pdo_query($sql);
+        return $result;
     }
 ?>
