@@ -472,6 +472,17 @@
             }
             $view = "./view/account/edit_account.php";
             break;
+        
+        case "quenpass":
+            if(isset($_POST['btn_submit']) && $_POST['btn_submit']){
+                $email = $_POST['email'];
+                $arr = quenmatkhau($email);
+                if(is_array($arr)){
+                $pass = $arr['mat_khau'];
+                }
+            }
+            $view = "view/account/quenpass.php";
+            break;
 
         // case "demo":
         //     if(isset($_POST['gui'])){
