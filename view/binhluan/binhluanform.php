@@ -9,44 +9,49 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
-    .tttk {
-        display: flex;
-    }
-    
-    .tttk img {
-        border-radius: 50%;
-        height: 30px;
-    }
-    .form form{
-        display: flex;
-    }
-    .ndbl p {
-        font-size: 10px;
-        margin-left: 30px;
-    }
+.tttk {
+    display: flex;
+}
+
+.tttk img {
+    border-radius: 50%;
+    height: 30px;
+}
+
+.form form {
+    display: flex;
+}
+
+.ndbl p {
+    font-size: 10px;
+    margin-left: 30px;
+}
 </style>
+
 <body>
-<div class="container">
-    <div class="binhluan">
-        <?php foreach ($dsbl as $value):?>
+    <div class="container">
+        <div class="binhluan">
+            <?php foreach ($dsbl as $value):?>
             <?php if($value['id_sp'] == $id_sp): ?>
-                <div class="ndbl">
-                    <div class="tttk">
-                        <h6><?php echo $value['ten_dang_nhap'].": <br /> ".$value['noi_dung'] ?></h6>
-                    </div>
-                    <p><?php echo "ngày bình luận: ".$value['ngay_bl']?></p>
+            <div class="ndbl">
+                <div class="tttk">
+                    <h6><?php echo '<i class="fa-solid fa-user"></i>  '.$value['ten_dang_nhap']."  <br />  <br />".$value['noi_dung'] ?>
+                    </h6>
                 </div>
+                <p><?php echo "ngày bình luận: ".$value['ngay_bl']?></p>
+            </div>
             <?php endif; ?>
-        <?php endforeach;?>
-        <h3>Bình luận tại đây</h3>
-        <hr>
-        <?php
+            <?php endforeach;?>
+            <h3>Bình luận tại đây</h3>
+            <hr>
+            <?php
         if (isset($_SESSION['user'])) {
         ?>
 
@@ -58,11 +63,11 @@
                     <form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
                         <input type="hidden" name="idpro" value="<?=$id_sp?>">
                         <input type="text" name="noi_dung" class="form-control" id="" placeholder="nhập bình luận">
-                        <input type="submit" name="gui_bl" class="btn btn-success" class="gui" value="Gửi">                       
+                        <input type="submit" name="gui_bl" class="btn btn-success" class="gui" value="Gửi">
                     </form>
                 </div>
             </div>
-        <?php
+            <?php
         } else {
             echo "vui lòng đăng nhập để bình luận";
         }
@@ -78,7 +83,8 @@
             }
         }
         ?>
+        </div>
     </div>
-</div>
 </body>
+
 </html>

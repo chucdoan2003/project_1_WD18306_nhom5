@@ -28,7 +28,7 @@
                 <div class="ttgio_hang-itemcontent">
                     <div class="ttgio_hang__title"><?=$ten_sp?></div>
                     <div class="ttgio_hang__soluong">Số lượng : <?=$so_luong?></div>
-                    <div class="ttgio_hang__price">Giá: <?=$gia?> vnđ</div>
+                    <div class="ttgio_hang__price">Giá: <?=number_format($gia)?> vnđ</div>
                 </div>
 
 
@@ -37,10 +37,10 @@
             <div class="line"></div>
 
             <div class="tt_donhang">
-                <div class="tamtinh">Tạm tính: <?=$tong_tien?> vnđ</div>
+                <div class="tamtinh">Tạm tính: <?=number_format($tong_tien)?> vnđ</div>
                 <div class="phivc">Phí vận chuyển: Miễn phí</div>
                 <div class="line"></div>
-                <div class="tong">Tổng: <?=$tong_tien?></div>
+                <div class="tong">Tổng: <?=number_format($tong_tien)?></div>
                 <input type="hidden" value="<?=$total?>" name="total">
             </div>
         </div>

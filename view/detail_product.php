@@ -14,16 +14,26 @@
             <div class="detail__title">
                 <?=$ten_sp?>
             </div>
-            <div class="detail_category">Danh mục : <span>Quần áo Bóng đá</span></div>
+            <div class="detail_category">Danh mục :
+                <?php foreach($dsdm as $value): ?>
+                <span>
+                    <?php if($value['id'] == $id_dm){
+                                echo $value['ten_danhmuc']; 
+                                } 
+                            ?>
+                </span>
+                <?php endforeach; ?>
+            </div>
             <div class="detail__price">
-                Giá: <?= $gia?> vnđ
+                Giá: <?= number_format($gia)?> vnđ
             </div>
             <div class="detail__quantity">
                 <div class="detail__quantity-title">
                     Số lượng
                 </div>
 
-                <form action="?act=add_cart" method="POST">
+                <form action="" method="POST">
+                    <!-- ?act=add_cart&id= -->
                     <div class="quantity">
                         <input type="hidden" value="<?=$id?>" name="id">
                         <input type="hidden" value="<?=$gia?>" name="gia">
@@ -66,6 +76,7 @@
 
     </div>
     <div class="line"></div>
+    <h2>Bình luận</h2>
     <div class="comment">
         <!-- bình luận -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -107,6 +118,14 @@
     </div>
 
 </div>
+<div class="wrap_tt <?php if(isset($showtc)){echo 'block';} ?> ">
+    <div class="themthanhcong">
+        <h5>Thêm vào giỏ hàng thành công</h5>
+        <a href="?act=gio_hang"> <button class='btn btn-success'>Xem giỏ hàng</button></a>
+        <button class='btn btn-primary ttmua'>Tiếp tục xem sản phẩm</button>
+    </div>
+</div>
+
 <script>
 var decreaseE = document.querySelector('.decrease')
 var numberE = document.querySelector('.number')
@@ -128,6 +147,19 @@ function increase() {
     }
     numberE.value = init
 }
+var thongbao = document.querySelector('.wrap_tt')
+var addcart = document.querySelector('.addCart')
+var ttmua = document.querySelector('.ttmua')
+ttmua.addEventListener('click', function() {
+    thongbao.classList.remove('block')
+
+})
+thongbao.addEventListener('click', function() {
+    thongbao.classList.remove('block')
+})
+addcart.addEventListener('click', function() {
+    thongbao.classList.add('block')
+})
 </script>
 
 

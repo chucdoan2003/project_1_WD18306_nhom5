@@ -15,7 +15,7 @@
 
     <title>admin</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
-</head> 
+</head>
 
 <body>
     <div class="container">
@@ -24,14 +24,29 @@
                 Drashboard
             </div>
             <div class="admin__aside-nav">
-                <ul>
-                    <li><a href="#">Trang chủ</a> </li>
-                    <li> <a href="./?act=list_sp">Sản phẩm</a> </li>
-                    <li> <a href="./?act=list_dm"> Danh mục</a></li>
-                    <li> <a href="./?act=dskh">Khách hàng</a></li>
-                    <li> <a href="./?act=thongke"> Thống kê</a></li>
-                    <li> <a href="./?act=dsbl">Bình luận</a></li>
-                    <li> <a href="./?act=list_donhang">Đơn hàng</a></li>
+                <ul style=' padding-left:0;'>
+                    <li class="<?php if(isset($list_home_active)){echo 'active_color';} ?>"><a href="?act=home"> <i
+                                class="fa-solid fa-house" style="margin: 0 10px; color:#1f1d1d"></i>Trang
+                            chủ</a>
+                    </li>
+                    <li class="<?php if(isset($list_sanpham_active)){echo 'active_color';} ?>"> <a
+                            href="./?act=list_sp"> <i class="fa-solid fa-cart-shopping"
+                                style="margin: 0 10px; color:#1f1d1d"></i>Sản phẩm</a> </li>
+                    <li class="<?php if(isset($list_dm_active)){echo 'active_color';} ?>"> <a href="./?act=list_dm"><i
+                                class="fa-solid fa-list" style="margin: 0 10px; color:#1f1d1d"></i>
+                            Danh mục</a></li>
+                    <li class="<?php if(isset($list_kh_active)){echo 'active_color';} ?>"> <a href="./?act=dskh"> <i
+                                class="fa-solid fa-user" style="margin: 0 10px; color:#1f1d1d"></i>Khách hàng</a></li>
+                    <li class="<?php if(isset($list_tk_active)){echo 'active_color';} ?>"> <a href="./?act=thongke"><i
+                                class="fa-solid fa-chart-simple" style="margin: 0 10px; color:#1f1d1d"></i> Thống kê</a>
+                    </li>
+                    <li class="<?php if(isset($list_bl_active)){echo 'active_color';} ?>"> <a href="./?act=dsbl"><i
+                                class="fa-solid fa-comment" style="margin: 0 10px; color:#1f1d1d"></i>Bình luận</a></li>
+                    <li class="<?php if(isset($list_dh_active)){echo 'active_color';} ?>"> <a
+                            href="./?act=list_donhang"><i class="fa-solid fa-tags"
+                                style="margin: 0 10px; color:#1f1d1d"></i>Đơn hàng</a></li>
+                    <li> <a href="../?act=home"><i class="fa-solid fa-house-user"
+                                style="margin: 0 10px; color:#1f1d1d"></i>Về trang người dùng</a></li>
 
                 </ul>
             </div>
@@ -47,3 +62,16 @@
                     <i class="fa-solid fa-circle-user"></i>
                 </div>
             </div>
+            <script>
+            function changeBackground(currentClick) {
+                var list_li = document.querySelectorAll('li')
+                console.log(list_li)
+                console.log(currentClick)
+
+                for (var i = 0; i < list_li.length; i++) {
+                    list_li[i].style.backgroundColor = '';
+                }
+                currentClick.style.backgroundColor = '#c3c4c6';
+
+            }
+            </script>

@@ -9,8 +9,7 @@
         return pdo_query($sql);
     }
     function load_thongke_sanpham_theongay(){
-        $sql = "SELECT COUNT(hoa_don.id) 'so_luong', created_at FROM `hoa_don` WHERE trang_thai = 3 GROUP BY created_at";
+        $sql = "SELECT date(hoa_don.created_at) as ngay, SUM(tong_tien) as total,COUNT(id) as so_luong FROM hoa_don where hoa_don.trang_thai = 3 GROUP BY date(hoa_don.created_at);";
         return pdo_query($sql);
     }
-?>
 ?>

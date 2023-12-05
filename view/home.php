@@ -13,7 +13,7 @@
               <div class="card-body">
                   <h5 class="name_prod"><a href="?act=ctsp&id=<?=$sp['id']?>"><?=$sp['ten_sp']?></a></h5>
                   <p class="card-price">
-                      <span>Giá sản phẩm: <?=$sp['gia']?> VNĐ</span>
+                      <span>Giá sản phẩm: <?php echo number_format($sp['gia'])?> VNĐ</span>
                   </p>
                   <p class="mota">
                       <?= $sp['mo_ta']?>
@@ -35,12 +35,12 @@
               <div class="card-body">
                   <h5 class="name_prod"><a href="?act=ctsp&id=<?=$sp['id']?>"><?=$sp['ten_sp']?></a></h5>
                   <p class="card-price">
-                      <span>Giá sản phẩm: <?=$sp['gia']?> VNĐ</span>
+                      <span>Giá sản phẩm: <?php echo number_format($sp['gia'])?> VNĐ</span>
                   </p>
                   <p class="mota">
                       <?= $sp['mo_ta']?>
                   </p>
-                  <a href="#" class="btn btn-success">Mua ngay</a>
+                  <a href="?act=ctsp&id=<?=$sp['id']?>" class="btn btn-success">Mua ngay</a>
               </div>
           </div>
           <?php endforeach; ?>

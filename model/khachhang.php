@@ -8,7 +8,6 @@
     function add_khachhang($name_kh, $username, $password, $so_dt, $email, $dia_chi,$vai_tro){
         $sql = "insert into tai_khoan values(null,'$name_kh','$username', '$password', '$so_dt', '$email','$dia_chi', $vai_tro)";
         pdo_execute($sql);
-
     }
 
     function getone_khachhang($idkh){

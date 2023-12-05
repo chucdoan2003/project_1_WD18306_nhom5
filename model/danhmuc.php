@@ -23,4 +23,9 @@
         $sql="delete from danhmuc where id=$iddm";
         pdo_execute($sql);
     }
+    // Xóa sản phẩm theo danh mục
+    function delete_sp_dm($id_dm){
+        $sql="delete from san_pham where id_dm=?";
+        pdo_execute($sql,$id_dm);
+    }
 ?>

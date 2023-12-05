@@ -28,7 +28,8 @@
                            </a>
                        </li>
                        <?php endif;?>
-                       <li><a href="#"> <i class="fa-solid fa-bag-shopping" style="color: green"></i> Lịch sử đơn
+                       <li><a href="./?act=don_hang_danhan"> <i class="fa-solid fa-bag-shopping"
+                                   style="color: green"></i> Lịch sử đơn
                                hàng</a></li>
                        <li>
                            <a href="?act=logout">Đăng xuất <i class="fa-solid fa-right-to-bracket"
@@ -153,3 +154,4 @@
            </div>
        </div>
    </div>
+  

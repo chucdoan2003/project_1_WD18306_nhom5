@@ -11,7 +11,7 @@
     session_start();
     $act=$_GET['act'] ??'';
     $view='./view/home.php';
-    $spnew=get_sp_new();
+    $spnew=load_sp_new();
     $sptop4view=get_sp_view_top4();
     $dsdm = load_all_danhmuc();
     $dssp = load_all_sp();
@@ -63,7 +63,52 @@
             tangview($_GET['id']);
             $sp_lienquan = sp_lienquan($_GET['id']);
             $sp=get_one_sp($id);
+            if($_SERVER['REQUEST_METHOD']==='POST'){
+                if(isset($_SESSION['user1'])){
+                    $id_tk=$_SESSION['user1']['id'];
+                }
+              
+                if(isset($_POST['btn_addcart'])){
+                    $id_sp=$_POST['id'];
+                    $so_luong=$_POST['so_luong_sp'];
+                    $gia=$_POST['gia'];
+                    $tonggia=$so_luong*$gia;               
+                    // kiểm tra id tk có trong giỏ hàng chưa
+                    $checkID_tk=get_id_cart($id_tk);
+                    //
+    
+                    if(!is_array($checkID_tk) && $checkID_tk!==""){
+                        $id_giohang=insert_tk_cart($id_tk);
+                        insert_sp_ctgh($id_giohang,$id_sp,$so_luong,$tonggia);
+                    }
+                    if(is_array($checkID_tk) && $checkID_tk!=''){  
+                        $id_cart=$checkID_tk['id'];               
+                        $checkID_sp=check_idsp_ctgh($id_sp,$id_cart);
+                        if(is_array($checkID_sp) && $checkID_sp!=''){
+                        update_soluong($so_luong,$id_sp);
+                        $newsp=check_idsp_ctgh($id_sp,$id_cart);
+                        $new_sl=$newsp['so_luong'];
+                        $new_gia=$gia * $new_sl;
+                        update_gia($id_sp,$new_gia);   
+                        }
+                                                        
+                    }
+                    if(is_array($checkID_tk) && !is_array($checkID_sp)){
+                        extract($checkID_tk);
+                        insert_sp_ctgh($id,$id_sp,$so_luong,$tonggia);
+                    }
+                }
+                $showtc='';
+
+            }
+            //
+            
+
+
+            //
+
             $view='./view/detail_product.php';
+
             break;
         case 'gio_hang':
             $slide_show='';
@@ -82,44 +127,54 @@
             $view= './view/cart.php';
             break;
             //login
-        case 'add_cart':
-            $thongbao="";
-            
+        // case 'add_cart':
+           
+        //     if(isset($_SESSION['user1'])){
+        //         $id_tk=$_SESSION['user1']['id'];
+        //     }
           
-            if(isset($_POST['btn_addcart'])){
-                $id_sp=$_POST['id'];
-                $so_luong=$_POST['so_luong_sp'];
-                $gia=$_POST['gia'];
-                $tonggia=$so_luong*$gia;
-                $id_tk=$_SESSION['user1']['id'];
-                // kiểm tra id tk có trong giỏ hàng chưa
-                $checkID_tk=check_idtk_cart($id_tk);
-                $id_cart=$checkID_tk['id'];
-                $checkID_sp=check_idsp_ctgh($id_sp,$id_cart);
-                if(!is_array($checkID_tk) && $checkID_tk!==""){
-                    $id_giohang=insert_tk_cart($id_tk);
-                    insert_sp_ctgh($id_giohang,$id_sp,$so_luong,$tonggia);
-                }
-                else if(is_array($checkID_sp) && $checkID_sp!== "" && is_array($checkID_tk)){                  
-                    update_soluong($so_luong,$id_sp);
-                    $newsp=check_idsp_ctgh($id_sp,$id_cart);
-                    $new_sl=$newsp['so_luong'];
-                    $new_gia=$gia * $new_sl;
-                    update_gia($id_sp,$new_gia);                                   
-                }
-                else if(is_array($checkID_tk) && !is_array($checkID_sp)){
-                    extract($checkID_tk);
-                    insert_sp_ctgh($id,$id_sp,$so_luong,$tonggia);
-                } 
-                if(isset($_SESSION['user1'])){
-                    $id=$_SESSION['user1']['id'];
-                    // $show_cart=show_cart($id);
-    
-                    $carts=show_gh($id);
-                }
-                $view='view/cart.php';              
-            }   
-            break;
+        //     if(isset($_POST['btn_addcart'])){
+        //         $id_sp=$_POST['id'];
+        //         $so_luong=$_POST['so_luong_sp'];
+        //         $gia=$_POST['gia'];
+        //         $tonggia=$so_luong*$gia;               
+        //         // kiểm tra id tk có trong giỏ hàng chưa
+        //         $checkID_tk=get_id_cart($id_tk);
+        //         //
+
+        //         if(!is_array($checkID_tk) && $checkID_tk!==""){
+        //             $id_giohang=insert_tk_cart($id_tk);
+        //             insert_sp_ctgh($id_giohang,$id_sp,$so_luong,$tonggia);
+        //         }
+        //         if(is_array($checkID_tk) && $checkID_tk!=''){  
+        //             $id_cart=$checkID_tk['id'];               
+        //             $checkID_sp=check_idsp_ctgh($id_sp,$id_cart);
+        //             if(is_array($checkID_sp) && $checkID_sp!=''){
+        //             update_soluong($so_luong,$id_sp);
+        //             $newsp=check_idsp_ctgh($id_sp,$id_cart);
+        //             $new_sl=$newsp['so_luong'];
+        //             $new_gia=$gia * $new_sl;
+        //             update_gia($id_sp,$new_gia);   
+        //             }
+                                                    
+        //         }
+        //         if(is_array($checkID_tk) && !is_array($checkID_sp)){
+        //             extract($checkID_tk);
+        //             insert_sp_ctgh($id,$id_sp,$so_luong,$tonggia);
+        //         }
+        //          //
+        //          $slide_show='';
+        //         $showtc='';
+        //          $title="Chi tiết sản phẩm";
+        //          if(isset($_GET['id'])){
+        //              $id=$_GET['id'];
+        //          }
+        //          tangview($_GET['id']);
+        //          $sp_lienquan = sp_lienquan($_GET['id']);
+        //          $sp=get_one_sp($id);
+        //          $view='./view/detail_product.php';            
+        //     }   
+        //     break;
         case 'delete_cart':
             $slide_show='';
             $thongbao="";
@@ -359,13 +414,16 @@
             $slide_show='';
 
             if(isset($_POST['btn_insert'])){
+                $name_kh = $_POST['name_kh'];
                 $username = $_POST['username'];
                 $email = $_POST['email'];
-                $pass = $_POST['pass'];
+                $so_dt = $_POST['so_dt'];
+                $dia_chi = $_POST['dia_chi'];
+                $password = $_POST['pass'];
                 $repeat_pass = $_POST['repeat_pass'];
                 $vaitro = $_POST['vai_tro'];
-                if($pass == $repeat_pass){
-                them_taikhoan($username, $pass, $email, $vaitro);
+                if($password == $repeat_pass){
+                add_khachhang($name_kh,$username, $password, $so_dt, $email, $dia_chi, $vaitro);
                 }
                 else{
                 $err = "Mật khẩu nhập lại không khớp. Vui lòng nhập lại";

@@ -387,6 +387,7 @@ background-color:purple;
 .title h3 {
   padding-top: 30px;
   margin-left: 28px;
+  font-size: 24px;
 }
 .content ul li {
   text-transform: none;
@@ -406,7 +407,6 @@ background-color:purple;
   /* background-color: white; */
   height: 100%;
   width: 80%;
- 
   margin-left: 40px;
 }
 
@@ -625,6 +625,7 @@ background-color:purple;
   border-radius: 5px;
   width: 20%;
   background-color: white;
+  
 }
 .list_prod {
   display: grid;
@@ -712,4 +713,32 @@ background-color:purple;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* Thông báo thêm giỏ hàng thành công */
+
+.wrap_tt{
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display:none;
+}
+.block{
+  display: block;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themthanhcong{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.themthanhcong h5{
+  text-align: center;
+  color:rgb(45, 241, 45);
+  margin: 10px 0 20px 0;
 }

@@ -1,4 +1,5 @@
 <?php   
+    
     include_once("../model/pdo.php");
     include_once("../model/danhmuc.php");
     include_once("../model/sanpham.php");
@@ -9,7 +10,12 @@
     $act=$_GET['act'] ??'';
     $view='./trangchu/trangchu.php';
     switch ($act) {
+    case 'home':
+        $list_home_active='';
+        $view='./trangchu/trangchu.php';
+        break;
     case 'list_sp':
+        $list_sanpham_active='';
         $title="Danh sách sản phẩm";
         $showsp=load_sp_dm();
         $view='./sanpham/list.php';
@@ -71,6 +77,7 @@
         break;
     //CRUD danh mục
     case "list_dm":
+        $list_dm_active='';
         $dsdm = load_all_danhmuc();
         $view = "danhmuc/list-danhmuc.php";
         break;
@@ -95,12 +102,15 @@
         break;
     case "delete_dm":
         if(isset($_GET['iddm']) && $_GET['iddm'] > 0){
+            delete_sp_dm($_GET['iddm']);
             delete_danhmuc($_GET['iddm']);
             header("location: ?act=list_dm");
+            
         }
         break;
     //crud khách hàng
     case "dskh":
+        $list_kh_active='';
         $dskh = danhsach_khachhang();
         $view = "khachhang/list_khachhang.php";
             break;
@@ -149,6 +159,7 @@
             break;
         //Bình luận
         case "dsbl":
+            $list_bl_active='';
             $dsbl = danhsach_binhluan();
             $view = "binhluan/list.php";
             break;
@@ -162,6 +173,7 @@
             break;
         //Đơn hàng
         case 'list_donhang':
+            $list_dh_active='';
             $donhangs = get_all_hoadon();
             
             $view = './donhang/list.php';
@@ -198,6 +210,7 @@
             break;
         //Thống ke
         case "thongke":
+            $list_tk_active='';
             $view = "thongke/list_all.php";
             break;
         // thống kê số lượng sản phẩm theo danh mục và số lượng đơn hàng trong ngày

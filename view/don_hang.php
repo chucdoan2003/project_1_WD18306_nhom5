@@ -1,6 +1,6 @@
 <!-- Đơn hàng -->
 <div class="wrap__donhang">
-    <h1 >Đơn hàng của bạn</h1>
+    <h1>Đơn hàng của bạn</h1>
     <div class="donhang__items">
         <div class="donhang_nav">
             <div class="donhang_all all <?php if(isset($all)){echo 'duongkeduoi';} ?>"><a href="?act=don_hang">Tất
@@ -32,10 +32,10 @@
             ?>
             <div class="tt_nguoinhan">
                 <h3 style="font-size: 24px;">Thông tin người nhận</h3>
-                <div class="hoten">Họ và tên:<?=$ho_ten?></div>
-                <div class="sdt">Số điện thoại:<?=$sdt?></div>
+                <div class="hoten">Họ và tên: <?=$ho_ten?></div>
+                <div class="sdt">Số điện thoại: <?=$sdt?></div>
                 <div class="email__nguoinhan">Email: <?=$email?></div>
-                <div class="diachi">Địa chỉ:<?=$dia_chi_nhan_hang?></div>
+                <div class="diachi">Địa chỉ: <?=$dia_chi_nhan_hang?></div>
             </div>
 
             <!-- end -->
@@ -53,10 +53,10 @@
                 </div>
                 <div class="donhang__title"><?=$ten_sp?></div>
                 <div class="donhang__soluong">Số lượng: <?=$chi_tiet_bill['so_luong']?></div>
-                <div class="donhang_gia">Giá: <?=$chi_tiet_bill['gia']?></div>
+                <div class="donhang_gia">Giá: <?=number_format($chi_tiet_bill['gia'])?> vnđ</div>
             </div>
             <?php endforeach; ?>
-            <div class="donhang__total">Tổng tiền:<?=$bill['tong_tien']?> vnđ</div>
+            <div class="donhang__total">Tổng tiền:<?=number_format($bill['tong_tien'])?> vnđ</div>
             <div class="donhang__trangthai">Trạng thái: <?php if($bill['trang_thai']==0){
                 echo "Chưa xác nhận";   
             } else if($bill['trang_thai']==1){
@@ -72,7 +72,7 @@
             ?>
 
             </div>
-            <?php if($bill['trang_thai']==1 ||$bill['trang_thai']==0){?>
+            <?php if($bill['trang_thai']==0){?>
             <a onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng?')"
                 href="?act=cancel_donhang&id=<?=$bill['id']?>"> <button class="btn btn-danger">Hủy đơn hàng</button></a>
             <?php
@@ -81,7 +81,7 @@
                 <button class="btn btn-success">Xác nhận đã nhận được hàng</button></a>
 
             <?php
-            } else if($bill['trang_thai']==3){?>
+            } else if($bill['trang_thai']==5){?>
             <a onclick="return confirm('Bạn có chắc chắn muốn mua lại?')" href="?act=mua_lai&id=<?=$bill['id']?>">
                 <button class="btn btn-success">Mua lại</button></a>
 

@@ -8,25 +8,29 @@
             <div class="ttgiao_hang-hinhthuctt">
                 <div class="mb-3">
                     <label for="name" class="form-label">Họ và tên</label>
-                    <input type="text" class="form-control" name="ho_ten" id='hoten_tt' />
+                    <input type="text" class="form-control" name="ho_ten" id='hoten_tt'
+                        value="<?=$_SESSION['user1']['ten']?>" />
                     <div class='valid_hoten_tt spanvalid'></div>
 
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">email</label>
-                    <input type="text" class="form-control" name="email" id='email_tt' />
+                    <input type="text" class="form-control" name="email" id='email_tt'
+                        value="<?=$_SESSION['user1']['email']?>" />
                     <div class='valid_email_tt spanvalid'></div>
 
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Số điện thoại</label>
-                    <input type="number" class="form-control" name="sdt" id='sdt_tt' />
+                    <input type="number" class="form-control" name="sdt" id='sdt_tt'
+                        value="<?=$_SESSION['user1']['so_dt']?>" />
                     <div class='valid_sdt_tt spanvalid'></div>
 
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" name="dia_chi" id='dc_tt' />
+                    <input type="text" class="form-control" name="dia_chi" id='dc_tt'
+                        value="<?=$_SESSION['user1']['dia_chi']?>" />
                     <div class='valid_diachi_tt spanvalid'></div>
 
                 </div>
@@ -63,7 +67,7 @@
                 <div class="ttgio_hang-itemcontent">
                     <div class="ttgio_hang__title"><?=$ten_sp?></div>
                     <div class="ttgio_hang__soluong">Số lượng : <?=$so_luong?></div>
-                    <div class="ttgio_hang__price">Giá: <?=$gia?> vnđ</div>
+                    <div class="ttgio_hang__price">Giá: <?=number_format($gia)?> vnđ</div>
                 </div>
 
 
@@ -72,10 +76,10 @@
             <div class="line"></div>
 
             <div class="tt_donhang">
-                <div class="tamtinh">Tạm tính: <?=$total?> vnđ</div>
+                <div class="tamtinh">Tạm tính: <?=number_format($total)?> vnđ</div>
                 <div class="phivc">Phí vận chuyển: Miễn phí</div>
                 <div class="line"></div>
-                <div class="tong">Tổng: <?=$total?></div>
+                <div class="tong">Tổng: <?=number_format($total)?> vnđ</div>
                 <input type="hidden" value="<?=$total?>" name="total">
             </div>
 

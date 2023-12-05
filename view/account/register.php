@@ -9,6 +9,12 @@
                                  <h2 class="text-uppercase text-center mb-5">ĐĂNG KÝ TÀI KHOẢN</h2>
 
                                  <form action="?act=register" method="post" id="form_register">
+                                     <div class="form-outline mb-4">
+                                         <label class="form-label" for="tendn">Họ và tên</label>
+                                         <input type="text" id="ho_ten" class="form-control form-control-lg"
+                                             name="name_kh" />
+                                         <span class='valid_hoten spanvalid'></span>
+                                     </div>
 
                                      <div class="form-outline mb-4">
                                          <label class="form-label" for="tendn">Tên đăng nhập</label>
@@ -20,10 +26,23 @@
 
                                      <div class="form-outline mb-4">
                                          <label class="form-label" for="email_dk">Email xác minh</label>
-
                                          <input type="email" id="email_dk" class="form-control form-control-lg"
                                              name="email" />
                                          <span class='valid_emaildk spanvalid'></span>
+                                     </div>
+
+                                     <div class="form-outline mb-4">
+                                         <label class="form-label" for="email_dk">Số điện thoại</label>
+                                         <input type="text" id="sdt" class="form-control form-control-lg"
+                                             name="so_dt" />
+                                         <span class='valid_sdt spanvalid'></span>
+                                     </div>
+
+                                     <div class="form-outline mb-4">
+                                         <label class="form-label" for="email_dk">Địa chỉ</label>
+                                         <input type="text" id="dia_chi" class="form-control form-control-lg"
+                                             name="dia_chi" />
+                                         <span class='valid_dc spanvalid'></span>
                                      </div>
 
                                      <div class="form-outline mb-4">
@@ -76,13 +95,22 @@ var ten_dn = document.getElementById('ten_dn')
 var email_dk = document.getElementById('email_dk')
 var mk_dk = document.getElementById('mk_dk')
 var mk2_dk = document.getElementById('mk2_dk')
+var ho_ten = document.getElementById('ho_ten')
+var sdt = document.getElementById('sdt')
+var dia_chi = document.getElementById('mk2_dk')
 
 //Thông báo
 var valid_tendk = document.querySelector('.valid_tendk')
 var valid_emaildk = document.querySelector('.valid_emaildk')
 var valid_mk_dk = document.querySelector('.valid_mk_dk')
 var valid_mk2_dk = document.querySelector('.valid_mk2_dk')
+var valid_hoten = document.querySelector('.valid_mk2_dk')
+var valid_dc = document.querySelector('.valid_mk2_dk')
+var valid_sdt = document.querySelector('.valid_mk2_dk')
+
+//
 var form_register = document.getElementById('form_register')
+
 
 
 function valid_empty() {
@@ -91,11 +119,34 @@ function valid_empty() {
     var is_empty_email_dk = false;
     var is_empty_mk_dk = false;
     var is_empty_mk2_dk = false;
+    var is_empty_hoten = false;
+    var is_empty_sdt = false;
+    var is_empty_dc = false;
+    if (ho_ten.value == "") {
+        is_empty_hoten = true;
+
+        valid_hoten.innerHTML = "Không để trống trường này"
+    }
+    if (sdt.value == "") {
+        is_empty_sdt = true;
+
+        valid_sdt.innerHTML = "Không để trống trường này"
+    }
+    if (dia_chi.value == "") {
+        is_empty_dc = true;
+
+        valid_dc.innerHTML = "Không để trống trường này"
+    }
+
+
     if (ten_dn.value == "") {
         is_empty_ten_dn = true;
 
         valid_tendk.innerHTML = "Không để trống trường này"
     }
+
+
+
     if (email_dk.value == "") {
         is_empty_email_dk = true;
 
@@ -111,7 +162,8 @@ function valid_empty() {
 
         valid_mk2_dk.innerHTML = "Không để trống trường này"
     }
-    if (is_empty_ten_dn == false && is_empty_email_dk == false && is_empty_mk_dk == false && is_empty_mk2_dk == false) {
+    if (is_empty_ten_dn == false && is_empty_email_dk == false && is_empty_mk_dk == false && is_empty_mk2_dk == false &&
+        is_empty_hoten == false && is_empty_sdt == false && is_empty_dc == false) {
         return true;
 
     } else {
@@ -136,6 +188,18 @@ mk_dk.addEventListener('focus', function() {
 mk2_dk.addEventListener('focus', function() {
 
     valid_mk2_dk.innerHTML = ''
+})
+ho_ten.addEventListener('focus', function() {
+
+    valid_hoten.innerHTML = ''
+})
+sdt.addEventListener('focus', function() {
+
+    valid_sdt.innerHTML = ''
+})
+dia_chi.addEventListener('focus', function() {
+
+    valid_dc.innerHTML = ''
 })
 // valid length
 function valid_length() {

@@ -31,19 +31,19 @@
                     <div class="cart__content">
                         <div class="cart__name"><?=$cart['ten_sp']?></div>
 
-                        <div class="detail_category">Danh mục : <span>Quần áo Bóng đá</span></div>
+                        <!-- <div class="detail_category">Danh mục : <span>Quần áo Bóng đá</span></div> -->
 
                     </div>
 
                 </div>
-                <div class="col-2 align__item"><?=$cart['gia_sp']?></div>
+                <div class="col-2 align__item"><?=number_format($cart['gia_sp'])?> vnđ</div>
                 <div class="col-2 align__item">
                     <div class="quantity_sp" style="font-size:24px">
                         <?=$cart['so_luong']?>
                     </div>
 
                 </div>
-                <div class="col-2 align__item"><?=$cart['gia']?></div>
+                <div class="col-2 align__item"><?=number_format($cart['gia'])?></div>
             </div>
 
             <?php endforeach; ?>
