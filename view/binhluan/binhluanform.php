@@ -60,7 +60,7 @@
                     <p><?php echo $_SESSION['user1']['ten_dang_nhap']; ?></p>
                 </div>
                 <div class="form">
-                    <form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
+                    <form action="./?act=add_cmt&id=<?=$id_sp?>" method="POST">
                         <input type="hidden" name="idpro" value="<?=$id_sp?>">
                         <input type="text" name="noi_dung" class="form-control" id="" placeholder="nhập bình luận">
                         <input type="submit" name="gui_bl" class="btn btn-success" class="gui" value="Gửi">
@@ -71,17 +71,17 @@
         } else {
             echo "vui lòng đăng nhập để bình luận";
         }
-        if (isset($_POST['gui_bl'])) {
-            if (isset($_POST['noi_dung']) && $_POST['noi_dung'] != "") {
-                $noi_dung = $_POST['noi_dung'];
-                $id_sp = $_POST['idpro'];
-                $id_tk = $_SESSION['user1']['id'];
-                $date = getdate();
-                $ngay_bl = $date['year'] . '-' . $date['mon'] . '-' . $date['mday'];
-                add_binhluan($noi_dung, $id_tk, $id_sp, $ngay_bl);
-                header("location: ".$_SERVER['HTTP_REFERER']);
-            }
-        }
+        // if (isset($_POST['gui_bl'])) {
+        //     if (isset($_POST['noi_dung']) && $_POST['noi_dung'] != "") {
+        //         $noi_dung = $_POST['noi_dung'];
+        //         $id_sp = $_POST['idpro'];
+        //         $id_tk = $_SESSION['user1']['id'];
+        //         $date = getdate();
+        //         $ngay_bl = $date['year'] . '-' . $date['mon'] . '-' . $date['mday'];
+        //         add_binhluan($noi_dung, $id_tk, $id_sp, $ngay_bl);
+        //         header("location: ".$_SERVER['HTTP_REFERER']);
+        //     }
+        // }
         ?>
         </div>
     </div>

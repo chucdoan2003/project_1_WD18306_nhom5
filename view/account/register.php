@@ -96,7 +96,7 @@ var email_dk = document.getElementById('email_dk')
 var mk_dk = document.getElementById('mk_dk')
 var mk2_dk = document.getElementById('mk2_dk')
 var ho_ten = document.getElementById('ho_ten')
-var sdt = document.getElementById('sdt')
+var sdt_dk = document.getElementById('sdt')
 var dia_chi = document.getElementById('mk2_dk')
 
 //Thông báo
@@ -104,9 +104,9 @@ var valid_tendk = document.querySelector('.valid_tendk')
 var valid_emaildk = document.querySelector('.valid_emaildk')
 var valid_mk_dk = document.querySelector('.valid_mk_dk')
 var valid_mk2_dk = document.querySelector('.valid_mk2_dk')
-var valid_hoten = document.querySelector('.valid_mk2_dk')
-var valid_dc = document.querySelector('.valid_mk2_dk')
-var valid_sdt = document.querySelector('.valid_mk2_dk')
+var valid_hoten = document.querySelector('.valid_hoten')
+var valid_dc = document.querySelector('.valid_dc')
+var valid_sdt = document.querySelector('.valid_sdt')
 
 //
 var form_register = document.getElementById('form_register')

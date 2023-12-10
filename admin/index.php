@@ -62,7 +62,9 @@
             $id_dm=$_POST['danh_muc'] ??'';
             update_sp($id,$ten_sp,$gia,$mo_ta,$so_luong,$chi_tiet,$hinh_anh,$id_dm);
             $thongbao="Sửa thành công"??'';
-        
+        $showsp=load_sp_dm();
+
+        $view='./sanpham/list.php';
         }
         break;  
     case 'delete_sp':

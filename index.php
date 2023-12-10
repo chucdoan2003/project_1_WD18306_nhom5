@@ -8,6 +8,7 @@
     include_once("./model/thanhtoan.php");
     include_once("./model/hoadon.php");
     include_once('./model/nguoinhan.php');
+    include_once('./model/binhluan.php');
     session_start();
     $act=$_GET['act'] ??'';
     $view='./view/home.php';
@@ -433,7 +434,33 @@
             $view = "./view/account/register.php";
             break;
         case "detail_account":  
+            $slide_show='';
+            
             $view = "./view/account/detail_account.php";
+            break;
+        // view bình luận
+        case 'add_cmt':
+            if (isset($_POST['gui_bl'])) {
+                if (isset($_POST['noi_dung']) && $_POST['noi_dung'] != "") {
+                    $noi_dung = $_POST['noi_dung'];
+                    $id_sp = $_POST['idpro'];
+                    $id_tk = $_SESSION['user1']['id'];
+                    $date = getdate();
+                    $ngay_bl = $date['year'] . '-' . $date['mon'] . '-' . $date['mday'];
+                    add_binhluan($noi_dung, $id_tk, $id_sp, $ngay_bl);
+                    
+                }
+            }
+            $title="Chi tiết sản phẩm";
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+            }
+            tangview($_GET['id']);
+            $sp_lienquan = sp_lienquan($id);
+            
+            $sp=get_one_sp($id);
+           
+            $view='./view/detail_product.php';
             break;
             // đăng xuất
         case 'logout':
